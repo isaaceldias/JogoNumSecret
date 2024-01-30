@@ -5,8 +5,12 @@ let chute;
 let chances = 1;
 var numChutado=[];
 
-function recarregarPagina() {
-    location.reload();
+function jogarNovamente() {
+    numeroSecreto= parseInt(Math.random()*100+1);
+    console.log(numeroSecreto);
+    numChutado=[];
+    chances=1;
+    Iniciar();
 }
 function Iniciar(){
     while (chute != numeroSecreto) {
