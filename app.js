@@ -28,6 +28,7 @@ function newNumber() {
   console.log(numeroSecreto);
   numChutado = [];
   chances = 1;
+  document.getElementById('ajuda').innerText='';
 }
 document.getElementById('chute').addEventListener('submit', function(){
   event.preventDefault();
