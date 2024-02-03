@@ -1,29 +1,36 @@
-alert('Boas vindas ao jogo do número secreto!');
-var numChutado=[];
-function iniciar(){
-    let numeroSecreto= parseInt(Math.random()*100+1);
-    console.log(numeroSecreto);
-    numChutado=[];
-    let chute;
-    let chances = 1;
-    while (chute != numeroSecreto) {
-        chute = prompt(`Escolha um número de 1 a 100`);
-        numChutado.push(chute);
-        if(chute==numeroSecreto){
-        break;    
-        } else {
-            if (chute < numeroSecreto) {
-                alert (`O número secreto é maior que ${chute}`)
-            } else {
-                alert (`O número secreto é menor que ${chute}`)
-            }
-            chances+=1;
-        }
+var numChutado = [];
+let numeroSecreto = parseInt(Math.random() * 100 + 1);
+console.log(numeroSecreto);
+numChutado = [];
+let chute;
+let chances = 1;
+function enviar() {
+  chute = document.getElementById("numbChute").value;
+  numChutado.push(chute);
+  if (chute == numeroSecreto) {
+    let palavraChance = chances > 1 ? "tentativas" : "tentativa";
+    document.getElementById('ajuda').innerText=`Parabéns, acertou com ${chances} ${palavraChance}! O número é ${numeroSecreto}`;
+  } else {
+    if (chute < numeroSecreto) {
+      document.getElementById('ajuda').innerText=`O número secreto é maior que ${document.getElementById("numbChute").value}`;
+    } else {
+      document.getElementById('ajuda').innerText=`O número secreto é menor que ${document.getElementById("numbChute").value}`;
     }
-    let palavraChance = chances > 1 ? 'tentativas' : 'tentativa';
-    alert(`Parabéns, acertou com ${chances} ${palavraChance}! O número é ${numeroSecreto}`);
-    console.log(numChutado);
-};
-function verChutes(){
-    alert(numChutado);
-};
+    chances += 1;
+  }
+  console.log(numChutado);
+}
+function verChutes() {
+  alert(numChutado);
+}
+function newNumber() {
+  numeroSecreto = parseInt(Math.random() * 100 + 1);
+  console.log(numeroSecreto);
+  numChutado = [];
+  chances = 1;
+}
+document.getElementById('chute').addEventListener('submit', function(){
+  event.preventDefault();
+  enviar();
+  document.getElementById('numbChute').value='';
+});
