@@ -20,9 +20,6 @@ function enviar() {
   }
   console.log(numChutado);
 }
-function verChutes() {
-  alert(numChutado);
-}
 function newNumber() {
   numeroSecreto = parseInt(Math.random() * 100 + 1);
   console.log(numeroSecreto);
